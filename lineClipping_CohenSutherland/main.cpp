@@ -19,6 +19,8 @@ class point{
         y = b;
     }
 } a, b, c, p1, p2;
+// HERE a,b,c ARE THE VERTICES OF CLIPPING POLYGON, p1,p2 ARE TWO END POINTS OF LINE 
+// TO BE CLIPPED
 
 // FUNCTION TO INITIALISE THE CLIPPING WINDOW
 void makeWindow() {
@@ -37,12 +39,18 @@ int genCode(point p) {
     int d = p.y*(b.x-a.x) - p.x*(b.y-a.y) + a.x*(b.y-a.y) - a.y*(b.x-a.x);
     int e = p.y*(c.x-b.x) - p.x*(c.y-b.y) + b.x*(c.y-b.y) - b.y*(c.x-b.x);
     int f = p.y*(a.x-c.x) - p.x*(a.y-c.y) + c.x*(a.y-c.y) - c.y*(a.x-c.x);
+
+    // IF POINT P LIES OUTSIDE OF EDGE AB OF CLIPPING POLYGON, THEN ADD THIS INFO. TO CODE
     if(d > 0) {
         code |= edgeAB;
     }
+
+    // IF POINT P LIES OUTSIDE OF EDGE BC OF CLIPPING POLYGON, THEN ADD THIS INFO. TO CODE
     if(e > 0) {
         code |= edgeBC;
     }
+
+    // IF POINT P LIES OUTSIDE OF EDGE CA OF CLIPPING POLYGON, THEN ADD THIS INFO. TO CODE
     if(f > 0) {
         code |= edgeCA;
     }
@@ -62,7 +70,6 @@ point intersection(point &pm, point &pn) {
 
     //cout << "Inside Intersection " << cnt << ": p.x: " << x << " p.y: " << y << endl;
 
-
     point ans(round(x),round(y));
     //cout << "Inside Intersection after roundoff " << cnt << ": p.x: " << ans.x << " p.y: " << ans.y << endl;
     return ans;
@@ -72,9 +79,9 @@ point intersection(point &pm, point &pn) {
 void clipLine(int codep1, int codep2) {
 
     if((codep1 & edgeAB) != 0) {
-        cout << p1.x << " p1.y: " << p1.y << endl;
+        //cout << p1.x << " p1.y: " << p1.y << endl;
         p1 = intersection(a,b);
-        cout << p1.x << " p1.y: " << p1.y << endl;
+        //cout << p1.x << " p1.y: " << p1.y << endl;
     }
     if((codep1 & edgeBC) != 0) {
         p1 = intersection(b,c);
