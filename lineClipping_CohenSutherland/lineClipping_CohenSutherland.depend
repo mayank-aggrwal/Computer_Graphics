@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1558232031 source:c:\users\may\desktop\codeblock_p\lineclipping_cohensutherland\main.cpp
+	<iostream>
+	<graphics.h>
+	<math.h>
+
