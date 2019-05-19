@@ -46,6 +46,7 @@ int genCode(point p) {
     }
     return code;
 }
+
 int cnt = 0;
 point intersection(point &pm, point &pn) {
     cnt++;
@@ -55,11 +56,11 @@ point intersection(point &pm, point &pn) {
     float x = (1.0*(b1*c2 - b2*c1))/(a1*b2 - a2*b1);
     float y = (1.0*(c1*a2 - a1*c2))/(a1*b2 - a2*b1);
 
-    cout << "Inside Intersection " << cnt << ": p.x: " << x << " p.y: " << y << endl;
+    //cout << "Inside Intersection " << cnt << ": p.x: " << x << " p.y: " << y << endl;
 
 
     point ans(round(x),round(y));
-    cout << "Inside Intersection after roundoff " << cnt << ": p.x: " << ans.x << " p.y: " << ans.y << endl;
+    //cout << "Inside Intersection after roundoff " << cnt << ": p.x: " << ans.x << " p.y: " << ans.y << endl;
     return ans;
 }
 
@@ -94,7 +95,6 @@ void clipLine(int codep1, int codep2) {
 void lineClipping() {
         int codep1 = genCode(p1);
         int codep2 = genCode(p2);
-        //cout << codep1 << endl << codep2 << endl;
         if(((codep1 & codep2) == 0) && ((codep1 | codep2) == 0)) {
             setcolor(RED);
             line(p1.x, p1.y, p2.x, p2.y);
