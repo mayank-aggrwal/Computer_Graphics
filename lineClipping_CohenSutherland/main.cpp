@@ -20,6 +20,7 @@ class point{
     }
 } a, b, c, p1, p2;
 
+// FUNCTION TO INITIALISE THE CLIPPING WINDOW
 void makeWindow() {
     a.x = 40;a.y = 40;
     b.x = 360;b.y = 280;
@@ -29,6 +30,7 @@ void makeWindow() {
     line(c.x, c.y, a.x, a.y);
 }
 
+// FUNCTION TO GENERATE CODE FOR A POINT
 int genCode(point p) {
 
     int code = 0;
@@ -48,6 +50,8 @@ int genCode(point p) {
 }
 
 int cnt = 0;
+
+// FUNCTION TO RETURN INTERSECTION POINT OF TWO GIVEN LINES
 point intersection(point &pm, point &pn) {
     cnt++;
     int a1 = pm.y-pn.y, b1 = pn.x-pm.x, c1 = pm.x*(pn.y-pm.y)-pm.y*(pn.x-pm.x);
@@ -64,6 +68,7 @@ point intersection(point &pm, point &pn) {
     return ans;
 }
 
+// FUNCTION TO CLIP LINE WHEN SOME PART IS OUTSIDE AND SOME INSIDE
 void clipLine(int codep1, int codep2) {
 
     if((codep1 & edgeAB) != 0) {
@@ -92,6 +97,7 @@ void clipLine(int codep1, int codep2) {
 
 }
 
+// FUNCTION TO CHECK THE POSITION OF LINE , WHETHER VISIBLE OR NOT
 void lineClipping() {
         int codep1 = genCode(p1);
         int codep2 = genCode(p2);
@@ -110,10 +116,13 @@ void lineClipping() {
         }
 }
 
+// MAIN DRIVER FUNCTION
 int main()
 {
+    // INITIALISE THE GRAPHICS WINDOW
     initwindow(600, 600);
 
+    // CLIPPING WINDOW
     makeWindow();
 
     //point p1(40,160);
@@ -124,7 +133,10 @@ int main()
     //point p1(140,90);
     //point p2(320,240);
     //setcolor(YELLOW);
+
+    // LINE TO BE CLIPPED
     line(p1.x, p1.y, p2.x, p2.y);
+
     lineClipping();
 
     getch();
