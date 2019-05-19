@@ -92,7 +92,6 @@ void clipLine(int codep1, int codep2) {
 }
 
 void lineClipping() {
-    while(1) {
         int codep1 = genCode(p1);
         int codep2 = genCode(p2);
         //cout << codep1 << endl << codep2 << endl;
@@ -109,7 +108,6 @@ void lineClipping() {
         }
         else if((codep1 & codep2) != 0) {
         }
-    }
 }
 
 int main()
