@@ -20,7 +20,14 @@ class point{
     }
 } a, b, c, p1, p2;
 
-
+void makeWindow() {
+    a.x = 40;a.y = 40;
+    b.x = 360;b.y = 280;
+    c.x = 280;c.y = 120;
+    line(a.x, a.y, b.x, b.y);
+    line(b.x, b.y, c.x, c.y);
+    line(c.x, c.y, a.x, a.y);
+}
 
 int genCode(point p) {
 
