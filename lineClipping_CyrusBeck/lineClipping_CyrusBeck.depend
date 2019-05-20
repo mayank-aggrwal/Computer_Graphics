@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1558244841 source:c:\users\may\desktop\codeblock_p\lineclipping_cyrusbeck\main.cpp
+	<iostream>
+	<math.h>
+	<graphics.h>
+
