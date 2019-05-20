@@ -31,7 +31,79 @@ class complexx{
     }
 } AB, BC, CA, normalAB, normalBC, normalCA;
 
+void clipLine() {
 
+    formEdgeVectors();
+    printE();
+    formNormalVectors();
+    printN();
+
+    float minT = 1, maxT = 0;
+    float t = -1;
+    // FOR EDGE AB
+    int den = dotProd(normalAB, p2, p1);
+    int num = dotProd(normalAB, p1, a);
+    t = (1.0*num)/(-1*den);
+    cout << "AB t:" << t << endl;
+    if(t>=0 && t<=1) {
+        if(den > 0) {
+            if(minT > t) {
+                minT = t;
+            }
+        }
+        else {
+            if(maxT < t) {
+                maxT = t;
+            }
+        }
+    }
+
+    // FOR EDGE BC
+    den = dotProd(normalBC, p2, p1);
+    num = dotProd(normalBC, p1, b);
+    t = (1.0*num)/(-1*den);
+    cout << "BC t:" << t << endl;
+    if(t>=0 && t<=1) {
+        if(den > 0) {
+            if(minT > t) {
+                minT = t;
+            }
+        }
+        else {
+            if(maxT < t) {
+                maxT = t;
+            }
+        }
+    }
+
+    // FOR EDGE CA
+    den = dotProd(normalCA, p2, p1);
+    num = dotProd(normalCA, p1, c);
+    t = (1.0*num)/(-1*den);
+    cout << "CA t:" << t << endl;
+    if(t>=0 && t<=1) {
+        if(den > 0) {
+            if(minT > t) {
+                minT = t;
+            }
+        }
+        else {
+            if(maxT < t) {
+                maxT = t;
+            }
+        }
+    }
+
+    cout << "maxt:" << maxT << " mint:" << minT << endl;
+    point tmp = findPointFromT(maxT);
+    p2 = findPointFromT(minT);
+    p1 = tmp;
+
+    setcolor(YELLOW);
+    line(p1.x, p1.y, p2.x, p2.y);
+
+
+}
 
 int main()
 {
