@@ -64,6 +64,17 @@ point findPointFromT(float t) {
     return ans;
 }
 
+void printE() {
+    cout << "AB: " << AB.r << " " << AB.c << endl;
+    cout << "BC: " << BC.r << " " << BC.c << endl;
+    cout << "CA: " << CA.r << " " << CA.c << endl;
+}
+void printN() {
+    cout << "normalAB: " << normalAB.r << " " << normalAB.c << endl;
+    cout << "normalBC: " << normalBC.r << " " << normalBC.c << endl;
+    cout << "normalCA: " << normalCA.r << " " << normalCA.c << endl;
+}
+
 void clipLine() {
 
     formEdgeVectors();
