@@ -31,6 +31,13 @@ class complexx{
     }
 } AB, BC, CA, normalAB, normalBC, normalCA;
 
+point findPointFromT(float t) {
+    int x = p1.x + (p2.x - p1.x)*t;
+    int y = p1.y + (p2.y - p1.y)*t;
+    point ans(round(x), round(y));
+    return ans;
+}
+
 void clipLine() {
 
     formEdgeVectors();
