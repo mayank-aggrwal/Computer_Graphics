@@ -31,6 +31,32 @@ class complexx{
     }
 } AB, BC, CA, normalAB, normalBC, normalCA;
 
+void makeWindow() {
+    a.x = 60;a.y = 40;
+    b.x = 40;b.y = 200;
+    c.x = 160;c.y = 280;
+}
+
+void formEdgeVectors() {
+    AB.r = b.x-a.x;AB.c = b.y-a.y;
+    BC.r = c.x-b.x;BC.c = c.y-b.y;
+    CA.r = a.x-c.x;CA.c = a.y-c.y;
+}
+
+complexx normal(complexx &a, complexx &b) {
+    b.r = -a.c;b.c = a.r;
+}
+
+void formNormalVectors() {
+    normal(AB, normalAB);
+    normal(BC, normalBC);
+    normal(CA, normalCA);
+}
+
+int dotProd(complexx normal, point p2, point p1) {
+    return (normal.r*(p2.x-p1.x) + normal.c*(p2.y-p1.y));
+}
+
 point findPointFromT(float t) {
     int x = p1.x + (p2.x - p1.x)*t;
     int y = p1.y + (p2.y - p1.y)*t;
