@@ -25,6 +25,7 @@ void makeWindow() {
     c.x = 140;c.y = 40;
 }
 
+// FIND INTERSECTION POINTS OF THE LINES GIVEN BY TWO CONSECUTIVE POINTS
 point findIntersection(point c, point d, point a, point b) {
     int a1 = c.y-d.y, b1 = d.x-c.x, c1 = c.x*(d.y-c.y)-c.y*(d.x-c.x);
     int a2 = a.y-b.y, b2 = b.x-a.x, c2 = a.x*(b.y-a.y)-a.y*(b.x-a.x);
@@ -40,6 +41,7 @@ point findIntersection(point c, point d, point a, point b) {
     return ans;
 }
 
+// CHECKING FOR I->O, O->I, O->O, I->I CASES
 void helper(point curr1, point curr2, queue<point> &q, point a, point b) {
     int d1 = curr1.x*(a.y-b.y)+curr1.y*(b.x-a.x)+a.x*(b.y-a.y)-a.y*(b.x-a.x);
     int d2 = curr2.x*(a.y-b.y)+curr2.y*(b.x-a.x)+a.x*(b.y-a.y)-a.y*(b.x-a.x);
@@ -68,7 +70,7 @@ void clipPolygon() {
     q.push(p2);
     q.push(p3);
 
-    // EDGE AB
+    // CLIPPING ALONG EDGE AB
     int cnt = q.size();
     q.push(p1);
     point curr1 = q.front(), curr2;
@@ -79,7 +81,7 @@ void clipPolygon() {
         curr1 = curr2;
     }
 
-    // EDGE BC
+    // CLIPPING ALONG EDGE BC
     cnt = q.size();
     q.push(q.front());
     curr1 = q.front();
@@ -90,7 +92,7 @@ void clipPolygon() {
         curr1 = curr2;
     }
 
-    // EDGE CA
+    // CLIPPING ALONG EDGE CA
     cnt = q.size();
     q.push(q.front());
     curr1 = q.front();
@@ -101,6 +103,7 @@ void clipPolygon() {
         curr1 = curr2;
     }
 
+    // DRAW THE CLIPPED POLYGON USING THE VERTICES
     q.push(q.front());
     curr1 = q.front();
     q.pop();
@@ -113,7 +116,7 @@ void clipPolygon() {
 
 }
 
-
+// MAIN DRIVER FUNCTION
 int main()
 {
     initwindow(600, 600);
@@ -131,6 +134,7 @@ int main()
     line(b.x,b.y,c.x,c.y);
     line(c.x,c.y,a.x,a.y);
 
+    // CLIP THE POLYGON USING THIS FUNCTION
     clipPolygon();
     getch();
     return 0;
