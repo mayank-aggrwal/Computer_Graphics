@@ -25,6 +25,21 @@ void makeWindow() {
     c.x = 140;c.y = 40;
 }
 
+point findIntersection(point c, point d, point a, point b) {
+    int a1 = c.y-d.y, b1 = d.x-c.x, c1 = c.x*(d.y-c.y)-c.y*(d.x-c.x);
+    int a2 = a.y-b.y, b2 = b.x-a.x, c2 = a.x*(b.y-a.y)-a.y*(b.x-a.x);
+
+    float x = (1.0*(b1*c2 - b2*c1))/(a1*b2 - a2*b1);
+    float y = (1.0*(c1*a2 - a1*c2))/(a1*b2 - a2*b1);
+
+    //cout << "Inside Intersection " << cnt << ": p.x: " << x << " p.y: " << y << endl;
+
+
+    point ans(round(x),round(y));
+    //cout << "Inside Intersection after roundoff " << cnt << ": p.x: " << ans.x << " p.y: " << ans.y << endl;
+    return ans;
+}
+
 void helper(point curr1, point curr2, queue<point> &q, point a, point b) {
     int d1 = curr1.x*(a.y-b.y)+curr1.y*(b.x-a.x)+a.x*(b.y-a.y)-a.y*(b.x-a.x);
     int d2 = curr2.x*(a.y-b.y)+curr2.y*(b.x-a.x)+a.x*(b.y-a.y)-a.y*(b.x-a.x);
