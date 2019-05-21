@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1558251540 source:c:\users\may\desktop\codeblock_p\polygonclip_sutherlandhodgeman\main.cpp
+	<iostream>
+	<graphics.h>
+	<queue>
+	<math.h>
+
