@@ -58,6 +58,17 @@ void clipPolygon() {
         helper(curr1, curr2, q, c, a);
         curr1 = curr2;
     }
+    
+    q.push(q.front());
+    curr1 = q.front();
+    q.pop();
+    while(!q.empty()) {
+        curr2 = q.front();q.pop();
+        setcolor(YELLOW);
+        line(curr1.x, curr1.y, curr2.x,  curr2.y);
+        curr1 = curr2;
+    }
+
 }
 
 
