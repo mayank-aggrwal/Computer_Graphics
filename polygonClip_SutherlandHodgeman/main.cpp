@@ -19,6 +19,12 @@ class point {
     }
 } a, b, c, p1,p2,p3;
 
+void makeWindow() {
+    a.x = 40;a.y = 200;
+    b.x = 300;b.y = 240;
+    c.x = 140;c.y = 40;
+}
+
 void helper(point curr1, point curr2, queue<point> &q, point a, point b) {
     int d1 = curr1.x*(a.y-b.y)+curr1.y*(b.x-a.x)+a.x*(b.y-a.y)-a.y*(b.x-a.x);
     int d2 = curr2.x*(a.y-b.y)+curr2.y*(b.x-a.x)+a.x*(b.y-a.y)-a.y*(b.x-a.x);
