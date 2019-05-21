@@ -19,6 +19,27 @@ class point {
     }
 } a, b, c, p1,p2,p3;
 
+void helper(point curr1, point curr2, queue<point> &q, point a, point b) {
+    int d1 = curr1.x*(a.y-b.y)+curr1.y*(b.x-a.x)+a.x*(b.y-a.y)-a.y*(b.x-a.x);
+    int d2 = curr2.x*(a.y-b.y)+curr2.y*(b.x-a.x)+a.x*(b.y-a.y)-a.y*(b.x-a.x);
+    // I->I
+    if(d1 < 0 && d2 < 0) {
+        q.push(curr2);
+    }
+    // I->O
+    else if(d1 < 0 && d2 > 0) {
+        point tmp = findIntersection(curr1,curr2,a,b);
+        q.push(tmp);
+    }
+    // O->I
+    else if(d1 > 0 && d2 < 0) {
+        point tmp = findIntersection(curr1,curr2,a,b);
+        q.push(tmp);
+        q.push(curr2);
+    }
+
+}
+
 void clipPolygon() {
 
     queue<point> q;
@@ -58,7 +79,7 @@ void clipPolygon() {
         helper(curr1, curr2, q, c, a);
         curr1 = curr2;
     }
-    
+
     q.push(q.front());
     curr1 = q.front();
     q.pop();
