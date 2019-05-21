@@ -19,6 +19,47 @@ class point {
     }
 } a, b, c, p1,p2,p3;
 
+void clipPolygon() {
+
+    queue<point> q;
+    q.push(p1);
+    q.push(p2);
+    q.push(p3);
+
+    // EDGE AB
+    int cnt = q.size();
+    q.push(p1);
+    point curr1 = q.front(), curr2;
+    q.pop();
+    while(cnt--) {
+        curr2 = q.front();q.pop();
+        helper(curr1, curr2, q, a, b);
+        curr1 = curr2;
+    }
+
+    // EDGE BC
+    cnt = q.size();
+    q.push(q.front());
+    curr1 = q.front();
+    q.pop();
+    while(cnt--) {
+        curr2 = q.front();q.pop();
+        helper(curr1, curr2, q, b, c);
+        curr1 = curr2;
+    }
+
+    // EDGE CA
+    cnt = q.size();
+    q.push(q.front());
+    curr1 = q.front();
+    q.pop();
+    while(cnt--) {
+        curr2 = q.front();q.pop();
+        helper(curr1, curr2, q, c, a);
+        curr1 = curr2;
+    }
+}
+
 
 int main()
 {
