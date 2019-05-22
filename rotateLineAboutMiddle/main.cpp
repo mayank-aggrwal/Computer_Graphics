@@ -18,6 +18,7 @@ public:
     }
 } p1, p2;
 
+// ROTATE GIVEN POINT P BY I DEGREES ABOUT mx AND my POINTS
 point rotByI(point p, int i, int mx, int my) {
     float c = cos(i*(PI/180));
     float s = sin(i*(PI/180));
@@ -26,6 +27,7 @@ point rotByI(point p, int i, int mx, int my) {
     return point(round(x), round(y));
 }
 
+// ROTATE GIVEN LINE
 void rotateLine() {
     int midx = (p1.x+p2.x)/2;
     int midy = (p1.y+p2.y)/2;
@@ -44,6 +46,8 @@ void rotateLine() {
 int main() {
 
     initwindow(600, 600);
+
+    // LINE TO BE ROTATED
     p1.x = 150;p1.y = 300;
     p2.x = 450;p2.y = 300;
 
