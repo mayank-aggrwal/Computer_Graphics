@@ -18,6 +18,14 @@ class point {
     }
 } p1, p2, p3, p4;
 
+void makeBezierCurve() {
+    float t;
+    for(t=0; t<1; t+=0.001) {
+        point p = findPointAtT(t);
+        putpixel(p.x,p.y,WHITE);
+    }
+}
+
 int main() {
 
     initwindow(600, 600);
