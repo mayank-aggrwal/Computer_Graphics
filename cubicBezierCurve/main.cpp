@@ -18,6 +18,13 @@ class point {
     }
 } p1, p2, p3, p4;
 
+point findPointAtT(float t) {
+    point p;
+    p.x = (1-t)*(1-t)*(1-t)*p1.x + 3*t*(1-t)*(1-t)*p2.x + 3*t*t*(1-t)*p3.x + t*t*t*p4.x;
+    p.y = (1-t)*(1-t)*(1-t)*p1.y + 3*t*(1-t)*(1-t)*p2.y + 3*t*t*(1-t)*p3.y + t*t*t*p4.y;
+    return p;
+}
+
 void makeBezierCurve() {
     float t;
     for(t=0; t<1; t+=0.001) {
