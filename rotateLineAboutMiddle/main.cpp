@@ -18,6 +18,14 @@ public:
     }
 } p1, p2;
 
+point rotByI(point p, int i, int mx, int my) {
+    float c = cos(i*(PI/180));
+    float s = sin(i*(PI/180));
+    float x = p.x*c - p.y*s + mx + my*s - mx*c;
+    float y = p.x*s + p.y*c + my - my*c - mx*s;
+    return point(round(x), round(y));
+}
+
 void rotateLine() {
     int midx = (p1.x+p2.x)/2;
     int midy = (p1.y+p2.y)/2;
