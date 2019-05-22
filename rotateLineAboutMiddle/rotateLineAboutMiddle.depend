@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1558358970 source:c:\users\may\desktop\codeblock_p\rotatelineaboutmiddle\main.cpp
+	<iostream>
+	<graphics.h>
+	<math.h>
+
