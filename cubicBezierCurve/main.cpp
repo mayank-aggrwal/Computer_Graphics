@@ -18,6 +18,7 @@ class point {
     }
 } p1, p2, p3, p4;
 
+// FIND POINT AT A PARTICULAR VALUE OF T
 point findPointAtT(float t) {
     point p;
     p.x = (1-t)*(1-t)*(1-t)*p1.x + 3*t*(1-t)*(1-t)*p2.x + 3*t*t*(1-t)*p3.x + t*t*t*p4.x;
@@ -25,6 +26,7 @@ point findPointAtT(float t) {
     return p;
 }
 
+// FUNCTION TO DRAW BEZIER CURVE
 void makeBezierCurve() {
     float t;
     for(t=0; t<1; t+=0.001) {
@@ -37,16 +39,14 @@ int main() {
 
     initwindow(600, 600);
     int sc = 40;
+
+    // CUBIC BEZIER CURVE HAS 4 CONTROL POINTS
     p1.x = 2*sc;p1.y = 3*sc;
     p2.x = 3*sc;p2.y = 10*sc;
     p3.x = 7*sc;p3.y = 11*sc;
     p4.x = 8*sc;p4.y = 1*sc;
 
-    /*putpixel(p1.x,p1.y,GREEN);
-    putpixel(p2.x,p2.y,GREEN);
-    putpixel(p3.x,p3.y,GREEN);
-    putpixel(p4.x,p4.y,GREEN);*/
-
+    // MARK THE CONTROL POINTS USING CIRCLES AROUND THEM
     setcolor(YELLOW);
     circle(p1.x,p1.y,5);
     circle(p2.x,p2.y,5);
