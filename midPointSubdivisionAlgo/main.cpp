@@ -51,15 +51,23 @@ int forEDA(point p) {
 
 int genCode(point p) {
     int code = 0;
+
+    // IF LINE IS OUTSIDE OF EDGE AB
     if(forEAB(p) > 0) {
         code |= edgeAB;
     }
+
+    // IF LINE IS OUTSIDE OF EDGE BC
     if(forEBC(p) > 0) {
         code |= edgeBC;
     }
+
+    // IF LINE IS OUTSIDE OF EDGE CD
     if(forECD(p) > 0) {
         code |= edgeCD;
     }
+
+    // IF LINE IS OUTSIDE OF EDGE DA
     if(forEDA(p) > 0) {
         code |= edgeDA;
     }
@@ -84,24 +92,33 @@ void clipLine() {
         return ;
     }
      
-    
+    // PARTIALLY OUTSIDE LINE
     else if((codep1 & codep2) == 0 && (codep1 | codep2) != 0) {
-        cout << 2 << endl;
+
+        // FIND THE MID POINT OF THE ENDPOINTS
         point pm(0,0);
         pm.x = round((p1.x+p2.x)/2);
         pm.y = round((p1.y+p2.y)/2);
         cout << pm.x << " " << pm.y << endl;
+
+        // GENERATE CODE FOR THE FOUND MID POINT
         int codepm = genCode(pm);
+
+        // IF MID POINT LIES IN REGION WHERE P1 IS PRESENT, MOVE P1 TO MID POINT
         if(codepm != 0 && (codepm&codep1) != 0) {
             p1.x = pm.x;p1.y = pm.y;
             cout << 3 << endl;
             clipLine();
         }
+
+        // IF MID POINT LIES IN REGION WHERE P2 IS PRESENT, MOVE P2 TO MID POINT
         else if(codepm != 0 && (codepm&codep2) != 0) {
             p2.x = pm.x;p2.y = pm.y;
             cout << 4 << endl;
             clipLine();
         }
+
+        // IF MID POINT LIES INSIDE THE WINDOW, FIND INTERSECTION POINTS WITH WINDOW EDGES
         else if(codepm == 0) {
             cout << 5 << endl;
             point pmm(0,0);pmm.x = pm.x;pmm.y = pm.y;
