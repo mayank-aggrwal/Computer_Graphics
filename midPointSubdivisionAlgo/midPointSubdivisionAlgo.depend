@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1558348289 source:c:\users\may\desktop\codeblock_p\midpointsubdivisionalgo\main.cpp
+	<iostream>
+	<graphics.h>
+	<math.h>
+
