@@ -66,6 +66,25 @@ int genCode(point p) {
     return code;
 }
 
+
+void clipLine() {
+
+    int codep1 = genCode(p1);
+    int codep2 = genCode(p2);
+    cout << 1 << endl;
+
+    // TOTALLY VISIBLE LINE
+    if(codep1 == 0 && codep2 == 0) {
+        line(p1.x,p1.y,p2.x,p2.y);
+        return ;
+    }
+
+    // TOTALLY INVISIBLE LINE
+    else if((codep1 & codep2) != 0) {
+        return ;
+    }
+}
+
 int main()
 {
     initwindow(600, 600);
