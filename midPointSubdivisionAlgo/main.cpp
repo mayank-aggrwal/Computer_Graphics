@@ -36,6 +36,36 @@ void makeWindow() {
     line(d.x,d.y,a.x,a.y);
 }
 
+int forEAB(point p) {
+    return ((a.y-b.y)*p.x + (b.x-a.x)*p.y + a.x*(b.y-a.y) - a.y*(b.x-a.x));
+}
+int forEBC(point p) {
+    return ((b.y-c.y)*p.x + (c.x-b.x)*p.y + b.x*(c.y-b.y) - b.y*(c.x-b.x));
+}
+int forECD(point p) {
+    return ((c.y-d.y)*p.x + (d.x-c.x)*p.y + c.x*(d.y-c.y) - c.y*(d.x-c.x));
+}
+int forEDA(point p) {
+    return ((d.y-a.y)*p.x + (a.x-d.x)*p.y + d.x*(a.y-d.y) - d.y*(a.x-d.x));
+}
+
+int genCode(point p) {
+    int code = 0;
+    if(forEAB(p) > 0) {
+        code |= edgeAB;
+    }
+    if(forEBC(p) > 0) {
+        code |= edgeBC;
+    }
+    if(forECD(p) > 0) {
+        code |= edgeCD;
+    }
+    if(forEDA(p) > 0) {
+        code |= edgeDA;
+    }
+    return code;
+}
+
 int main()
 {
     initwindow(600, 600);
