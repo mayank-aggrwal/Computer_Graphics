@@ -83,6 +83,76 @@ void clipLine() {
     else if((codep1 & codep2) != 0) {
         return ;
     }
+     
+    
+    else if((codep1 & codep2) == 0 && (codep1 | codep2) != 0) {
+        cout << 2 << endl;
+        point pm(0,0);
+        pm.x = round((p1.x+p2.x)/2);
+        pm.y = round((p1.y+p2.y)/2);
+        cout << pm.x << " " << pm.y << endl;
+        int codepm = genCode(pm);
+        if(codepm != 0 && (codepm&codep1) != 0) {
+            p1.x = pm.x;p1.y = pm.y;
+            cout << 3 << endl;
+            clipLine();
+        }
+        else if(codepm != 0 && (codepm&codep2) != 0) {
+            p2.x = pm.x;p2.y = pm.y;
+            cout << 4 << endl;
+            clipLine();
+        }
+        else if(codepm == 0) {
+            cout << 5 << endl;
+            point pmm(0,0);pmm.x = pm.x;pmm.y = pm.y;
+            do{
+                point pm1(0,0);
+                pm1.x = round((pmm.x + p1.x)/2);
+                pm1.y = round((pmm.y + p1.y)/2);
+                if((pm1.x==p1.x && pm1.y==p1.y) || (pm1.x==pmm.x && pm1.y==pmm.y)) {
+                    break;
+                }
+                int codepm1 = genCode(pm1);
+                if(codepm1 == 0){
+                    pmm.x = pm1.x;
+                    pmm.y = pm1.y;
+                }
+                else {
+                    p1.x = pm1.x;
+                    p1.y = pm1.y;
+                }
+            }while(forEAB(pmm)!=0 && forEBC(pmm)!=0 && forECD(pmm)!=0 && forEDA(pmm)!=0);
+            p1.x = pmm.x;p1.y = pmm.y;
+            cout << 6 << endl;
+            pmm.x = pm.x;pmm.y = pm.y;
+            do{
+                cout << 7 << endl;
+                point pm2(0,0);
+                pm2.x = round((pmm.x + p2.x)/2);
+                pm2.y = round((pmm.y + p2.y)/2);
+                if((pm2.x==p2.x && pm2.y==p2.y) || (pm2.x==pmm.x && pm2.y==pmm.y)) {
+                    break;
+                }
+            cout << "pm2.x : " << pm2.x << " pm2.y : " << pm2.y << endl;
+                int codepm2 = genCode(pm2);
+                if(codepm2 == 0){
+                    pmm.x = pm2.x;
+                    pmm.y = pm2.y;
+                }
+                else {
+                    p2.x = pm2.x;
+                    p2.y = pm2.y;
+                }
+            }while(forEAB(pmm)!=0 && forEBC(pmm)!=0 && forECD(pmm)!=0 && forEDA(pmm)!=0);
+        cout << 7 << endl;
+            p2.x = pmm.x;p2.y = pmm.y;
+
+            cout << p1.x << " p1.y: " << p1.y <<endl;
+            cout << p2.x << " p2.y: " << p2.y <<endl;
+            setcolor(YELLOW);
+            line(p1.x,p1.y,p2.x,p2.y);
+        }
+    }
 }
 
 int main()
