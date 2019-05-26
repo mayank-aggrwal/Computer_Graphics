@@ -68,6 +68,43 @@ int main()
         printN(t%w,y,w,siz);
         t = t+2*siz+space;
         printK(t%w,y,w,siz);
+    ////////////////////////////////////////////////////////////////////////
+        //outtextxy(100,450,"hello");
+        int x1, y1;
+        while(!ismouseclick(WM_LBUTTONDOWN)) {
+            ;
+        }
+        //outtextxy(100,350,"hello");
+        //char *ch = "you clicked";
+        getmouseclick(WM_LBUTTONDOWN, x1, y1);
 
+        //outtextxy(100,450,ch);
+
+
+    w -= 50;
+    for(int i = 0; ;) {
+
+        x = x + 4;
+        int t = x;
+        printM(t%w,y,INT_MAX,siz);
+        t = t+2*siz+space;
+        printA(t%w,y,w,siz);
+        t = t+siz+space;
+        printY(t%w,y,w,siz);
+        t = t+siz+space;
+        printA(t%w,y,w,siz);
+        t = t+siz+space;
+        printN(t%w,y,w,siz);
+        t = t+2*siz+space;
+        printK(t%w,y,w,siz);
+        while(ismouseclick(WM_LBUTTONDBLCLK)) {
+            closegraph();
+            return 0;
+        }
+        
+        
+    }
+
+    //getch();
     closegraph();
 }
