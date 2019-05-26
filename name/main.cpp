@@ -101,7 +101,20 @@ int main()
             closegraph();
             return 0;
         }
-        
+        while(ismouseclick(WM_LBUTTONDOWN)) {
+                int y,u;
+            outtextxy(220,450,"PAUSED");
+            getmouseclick(WM_LBUTTONDOWN, y, u);
+            while(!ismouseclick(WM_LBUTTONDOWN)){
+                //outtextxy(200,450,"nested in");
+                while(ismouseclick(WM_LBUTTONDOWN)) {
+                    break;
+                }
+
+            }
+            getmouseclick(WM_LBUTTONDOWN, y, u);
+            break;
+        }
         
     }
 
