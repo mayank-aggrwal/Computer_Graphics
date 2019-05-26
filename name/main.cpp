@@ -2,6 +2,49 @@
 
 using namespace std;
 
+void printM(int x, int y, int w,int size =50, int dec=3) {
+    line(x%w,y+dec,x%w,y+size-dec);
+    line(x%w,y+size+dec,x%w,y+2*size-dec);
+    line((x+dec),y,(x+size-dec),y);
+    line((x+size)%w,y+dec,(x+size)%w,y+size-dec);
+    line((x+size+dec),y,(x+2*size-dec),y);
+    line((x+2*size)%w,y+dec,(x+2*size)%w,y+size-dec);
+    line((x+2*size)%w,y+size+dec,(x+2*size)%w,y+2*size-dec);
+}
+void printA(int x, int y, int w,int size =50, int dec=3) {
+    line(x,y+dec,x,y+size-dec);
+    line(x,y+size+dec,x,y+2*size-dec);
+    line(x+dec,y,x+size-dec,y);
+    line(x+size,y+dec,x+size,y+size-dec);
+    line(x+size,y+size+dec,x+size,y+2*size-dec);
+    line(x+dec,y+size,x+size-dec,y+size);
+
+}
+void printY(int x, int y, int w,int size =50, int dec=3) {
+    line(x+dec,y+size,x+size-dec,y+size);
+    line(x,y+dec,x,y+size-dec);
+    line(x+size,y+dec,x+size,y+size-dec);
+    line(x+size,y+size+dec,x+size,y+2*size-dec);
+    line(x+dec,y+2*size,x+size-dec,y+2*size);
+}
+void printN(int x, int y, int w,int size =50, int dec=3) {
+    line(x,y+dec,x,y+size-dec);
+    line(x,y+size+dec,x,y+2*size-dec);
+    line(x+size,y+dec,x+size,y+size-dec);
+    line(x+size,y+size+dec,x+size,y+2*size-dec);
+    line(x+2*size,y+dec,x+2*size,y+size-dec);
+    line(x+2*size,y+size+dec,x+2*size,y+2*size-dec);
+    line(x+dec,y,x+size-dec,y);
+    line(x+size+dec,y+2*size,x+2*size-dec,y+2*size);
+}
+void printK(int x, int y, int w,int size =50, int dec=3) {
+    line(x,y+dec,x,y+size-dec);
+    line(x,y+size+dec,x,y+2*size-dec);
+    line(x+dec,y+size,x+size-dec,y+size);
+    line(x+size,y+dec,x+size,y+size-dec);
+    line(x+size,y+size+dec,x+size,y+2*size-dec);
+}
+
 int main()
 {
     int w = 500, h = 500;
