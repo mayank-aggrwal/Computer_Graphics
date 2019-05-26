@@ -115,7 +115,8 @@ int main()
             getmouseclick(WM_LBUTTONDOWN, y, u);
             break;
         }
-        
+        delay(30);
+        cleardevice();
     }
 
     //getch();
