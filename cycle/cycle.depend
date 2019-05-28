@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1546840232 source:c:\users\may\desktop\codeblock_p\cycle\main.cpp
+	<graphics.h>
+	<iostream>
+
