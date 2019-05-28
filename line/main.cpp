@@ -13,6 +13,15 @@ int main()
     outtextxy(100,100,"Nimish");
     */
 
+    while(true) {
+        int x1, y1;
+        while(!ismouseclick(WM_LBUTTONDOWN)) {
+            ;
+        }
+        getmouseclick(WM_LBUTTONDOWN, x1, y1);
+        
+    }
+
     getch();
     closegraph();
     return 0;
