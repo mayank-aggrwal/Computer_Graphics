@@ -19,7 +19,12 @@ int main()
             ;
         }
         getmouseclick(WM_LBUTTONDOWN, x1, y1);
-        
+        int x2, y2;
+        while(!ismouseclick(WM_LBUTTONDOWN)) {
+            ;
+        }
+        getmouseclick(WM_LBUTTONDOWN, x2, y2);
+        line(x1, y1, x2, y2);
     }
 
     getch();
